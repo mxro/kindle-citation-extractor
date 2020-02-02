@@ -1,6 +1,6 @@
 
 const processItem = (item) => {
-    const lines = item.trim().split('\r\n');
+    const lines = item.trim().split('\n');
     if (lines.length < 3) {
         console.error('Not enought lines. Cannot parse:\n' + item);
         return undefined;
