@@ -31,7 +31,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - name: Bump package version
       - run: npm version patch
 
   publish-npm:
@@ -49,11 +48,12 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
   
   push-master:
-    - needs: publish-npm
-    - runs-on: ubuntu-latest
-    - uses: mikeal/publish-to-github-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    needs: publish-npm
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mikeal/publish-to-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish-gpr:
     needs: bump-version
