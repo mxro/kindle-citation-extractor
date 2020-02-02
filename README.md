@@ -1,1 +1,1 @@
-"# kindle-citation-extractor" 
+# kindle-citation-extractor

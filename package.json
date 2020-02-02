@@ -1,0 +1,14 @@
+{
+  "name": "kindle-citation-extractor",
+  "version": "0.1.0",
+  "description": "Extract data from Kindle citations text file.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Max Rohde",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
