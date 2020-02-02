@@ -14,7 +14,7 @@ console.log(clippings);
 
 The following properties are supported:
 
-```json
+```
 { 
     book: 'The Passage of Power',
     author: 'Robert A. Caro',
