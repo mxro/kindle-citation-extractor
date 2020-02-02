@@ -1,6 +1,6 @@
 {
   "name": "kindle-citation-extractor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Extract data from Kindle citations text file.",
   "main": "src/index.js",
   "scripts": {
