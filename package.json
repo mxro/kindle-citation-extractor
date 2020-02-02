@@ -4,7 +4,8 @@
   "description": "Extract data from Kindle citations text file.",
   "main": "src/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": ""
   },
   "author": "Max Rohde",
   "license": "ISC",
