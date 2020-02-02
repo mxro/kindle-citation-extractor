@@ -34,6 +34,11 @@ jobs:
       - run: git config --global user.email "maxrohde.public@gmail.com"
       - run: git config --global user.name "GitHub actions build"
       - run: npm version patch
+      - name: Push changes
+        if: github.ref == 'refs/heads/master'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
   publish-npm:
     needs: bump-version
@@ -49,14 +54,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
   
-  push-master:
-    needs: publish-npm
-    runs-on: ubuntu-latest
-    steps:
-      - uses: mikeal/publish-to-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   publish-gpr:
     needs: bump-version
     runs-on: ubuntu-latest
