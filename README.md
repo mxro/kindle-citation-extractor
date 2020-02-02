@@ -25,3 +25,8 @@ The following properties are supported:
     dateAdded: 2016-03-21T12:21:24.000Z 
 },
 ```
+
+## Notes
+
+- Clipping files are expected to use UNIX line endings (`\n`). To convert a clippings file to unix line endings on Windows, simply run the following command: `dos2unix clippings.txt`.
+- Since Kindle clipping files do not contain timezones for dates, all dates are assumed to be in the local timezone.
