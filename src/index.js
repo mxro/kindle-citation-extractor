@@ -4,6 +4,7 @@ const processItem = (item) => {
     if (lines.length < 3) {
         console.error('Not enought lines. Cannot parse:\n' + item);
         return undefined;
+        //throw new Error('Cannot parse');
     }
 
     const firstLine = lines[0];
@@ -20,25 +21,39 @@ const processItem = (item) => {
     const secondLine = lines[1];
 
     const details = secondLine.split('|');
-    if (details.length < 3) {
-        console.log(lines);
-        console.error('Details not provided ['+details+']. Cannot parse:\n' + item);
-        return undefined;
-    }
 
-    let page = details[0].split('- Your Highlight on ')[1];
-    if (page) {
-        page = page.trim();
-    }
-    let location = details[1];
-    if (location) {
-        location = location.trim();
-    }
-
-    let dateStr = details[2].split('Added on ')[1];
     let date;
-    if (dateStr) {
-        date = new Date(Date.parse(dateStr));
+    let page;
+    let location;
+    // details format 1
+    if (details.length === 3) {
+
+        page = details[0].split('- Your Highlight on ')[1];
+        if (page) {
+            page = page.trim();
+        }
+        location = details[1];
+        if (location) {
+            location = location.trim();
+        }
+
+        let dateStr = details[2].split('Added on ')[1];
+        if (dateStr) {
+            date = new Date(Date.parse(dateStr));
+        }
+
+    } else if (details.length === 2) {
+
+        page = undefined;
+        location = details[0].split('- Your Highlight on Location ')[1];
+
+        let dateStr = details[1].split('Added on ')[1];
+        if (dateStr) {
+            date = new Date(Date.parse(dateStr));
+        }
+    } else {
+        console.error('Unknown format. Cannot parse location: ', details);
+        return undefined;
     }
 
     const remainder = lines.slice(3).join('\n').trim();

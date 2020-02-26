@@ -13,7 +13,7 @@ describe('Test parser', () => {
         expect(data[0].page).toBe('page 271');
         expect(data[0].location).toBe('Location 4144-4146');
         expect(data[0].dateAdded.toString()).toBe(new Date(Date.parse('Wednesday, December 16, 2015 11:57:19 PM')).toString());
-        
+
 
         expect(data[1].author).toBe('Sven Beckert');
         expect(data[1].book).toBe('Empire of Cotton');
@@ -21,9 +21,24 @@ describe('Test parser', () => {
         expect(data[1].page).toBe('page 7');
         expect(data[1].location).toBe('Location 95-97');
         expect(data[1].dateAdded.toString()).toBe(new Date(Date.parse('Saturday, December 19, 2015 3:20:11 PM')).toString());
-        
 
-        expect(data[data.length-1].quote).toBe('Three days later, Burke rose in Parliament to give his famous but futile “On Conciliation with America” speech. “A great empire and little minds go ill together,” he proclaimed.');
+
+        expect(data[data.length - 1].quote).toBe('Three days later, Burke rose in Parliament to give his famous but futile “On Conciliation with America” speech. “A great empire and little minds go ill together,” he proclaimed.');
 
     });
+
+    it('should read another file.', () => {
+        const clippings5 = fs.readFileSync('test/clippings5.txt', 'utf-8');
+        const data = parser(clippings5);
+        expect(data.length).toBe(210);
+
+        expect(data[200].author).toBe('Greger, Michael; Stone, Gene');
+        expect(data[200].book).toBe('How Not to Die : Discover the Foods Scientifically Proven to Prevent and Reverse Disease');
+        expect(data[200].quote).toBe('The culprit compound, cafestol, is found in the oils of coffee beans that become trapped in the paper filter, so drip coffee doesn’t raise cholesterol as much as french press, boiled, or Turkish (“mud”-style) coffee.');
+        expect(data[200].page).toBe(undefined);
+        expect(data[200].location).toBe('8289-8290 ');
+        expect(data[200].dateAdded.toString()).toBe(new Date(Date.parse('Tue Sep 27 2016 15:51:05 GMT+1000 (Australian Eastern Standard Time)')).toString());
+    });
+
+
 });
