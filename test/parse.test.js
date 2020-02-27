@@ -37,7 +37,7 @@ describe('Test parser', () => {
         expect(data[200].quote).toBe('The culprit compound, cafestol, is found in the oils of coffee beans that become trapped in the paper filter, so drip coffee doesn’t raise cholesterol as much as french press, boiled, or Turkish (“mud”-style) coffee.');
         expect(data[200].page).toBe(undefined);
         expect(data[200].location).toBe('8289-8290 ');
-        expect(data[200].dateAdded.toString()).toBe(new Date(Date.parse('Tue Sep 27 2016 15:51:05 GMT+1000 (Australian Eastern Standard Time)')).toString());
+        expect(data[200].dateAdded.toString()).toBe(new Date(Date.parse('Tuesday, September 27, 2016 3:51:05 PM')).toString());
     });
 
 
