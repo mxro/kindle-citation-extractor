@@ -3,10 +3,20 @@
   "version": "0.1.3",
   "description": "Extract data from Kindle citations text file.",
   "main": "src/index.js",
+  "homepage": "https://github.com/mxro/kindle-citation-extractor#kindle-citation-extractor",
   "scripts": {
     "test": "jest",
     "build": "echo 'Nothing to build!'"
   },
+  "repository": {
+    "type" : "git",
+    "url" : "git@github.com:mxro/kindle-citation-extractor.git"
+  },
+  "keywords": [
+    "kindle",
+    "citations",
+    "cli"
+  ],
   "author": "Max Rohde",
   "license": "ISC",
   "devDependencies": {
